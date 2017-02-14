@@ -4,6 +4,10 @@
 # A counter in reset with each new color and incremented with each
 # subsequent same color cycle.
 
+# Author: George Kaimakis
+# This file was created on 13/02/17
+
+
 import urequests
 import time
 import neopixel
