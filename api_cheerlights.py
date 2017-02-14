@@ -1,16 +1,19 @@
-# and parse out the latest 'color' information using the 'ujson' method. 
 # This micropython script will make a request to the cheerlights api
+# every 20 seconds and parse out the latest 'color' information using the
+# 'ujson' method. 
+# A counter in reset with each new color and incremented with each
+# subsequent same color cycle.
 
 import urequests
 import time
 import neopixel
 import machine
 
-
 # Global variables:
 RECVD_COLOR         = ''
 PREVIOUS_COLOR      = ''
 PIXEL_PIN           = 0
+NUM_OF_PIXELS       = 1
 NEW_COLOR           = ''
 
 INTERVAL            = 20000
@@ -20,6 +23,7 @@ topic               = 'channels/1417/feeds/last.json'
 api                 = host + topic
 
 
+# look-up color dict - api 'field1' is used as the key:
 colors = {'red':(255,0,0), 'orange':(255,165,0), 'yellow':(255,255,0),
 'green':(0,128,0), 'cyan':(0,255,255), 'blue':(0,0,255), 'purple':(128,0,128),
 'magenta':(255,0,255), 'pink':(255,192,203), 'white':(255,255,255),
@@ -45,14 +49,21 @@ def new_neopixel_color(next_color):
 
 # define pin and create neopixel object:
 pin = machine.Pin(PIXEL_PIN)
-np = neopixel.NeoPixel(pin, 1)
+np = neopixel.NeoPixel(pin, NUM_OF_PIXELS)
 
 count = 0
 while True:
     api_request(api)
+
+    # Check if color has changed:
+    # -if color is unchanged, increment counter, print and continue
     if RECVD_COLOR == PREVIOUS_COLOR:
         count += 1
         print(str(count) + ': ' + RECVD_COLOR)
+
+    # -if color has changed, reset counter, print, extract colot value form dict
+    # -and regenerate neopixel with new color.
+    # -reset color varaiables
     else:
         count = 1
         print(str(count) + ': ' + RECVD_COLOR)
