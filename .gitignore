@@ -1,0 +1,4 @@
+# files to be ignored in this repo
+
+*.pyc
+boot.py
