@@ -28,10 +28,10 @@ api                 = host + topic
 
 
 # look-up color dict - api 'field1' is used as the key:
-colors = {'red':(255,0,0), 'orange':(255,165,0), 'yellow':(255,255,0),
+colors = {'red':(255,0,0), 'orange':(211,84,0), 'yellow':(254,183,12),
 'green':(0,128,0), 'cyan':(0,255,255), 'blue':(0,0,255), 'purple':(128,0,128),
-'magenta':(255,0,255), 'pink':(255,192,203), 'white':(255,255,255),
-'oldlace':(253,245,230), 'warmwhite':(253,245,230)}
+'magenta':(255,0,255), 'pink':(254,52,62), 'white':(255,255,230),
+'oldlace':(255,200,130), 'warmwhite':(255,200,130)}
 
 def api_request(url):
     global RECVD_COLOR
