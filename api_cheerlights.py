@@ -18,7 +18,8 @@ RECVD_COLOR         = ''
 PREVIOUS_COLOR      = ''
 PIXEL_PIN           = 0
 NUM_OF_PIXELS       = 1
-NEW_COLOR           = ''
+NEW_COLOR_VAL       = ''
+OLD_COLOR_VAL       = ''
 
 INTERVAL            = 20000
 
@@ -41,15 +42,20 @@ def api_request(url):
     return None
 
 def recvd_color_test(color):
-    global NEW_COLOR
+    global NEW_COLOR_VAL
     if color in colors:
-        NEW_COLOR = colors[color]
+        NEW_COLOR_VAL = colors[color]
     return None
 
 def new_neopixel_color(next_color):
     np.fill(next_color)
     np.write()
     return None
+
+def color_transition():
+    global NEW_COLOR_VAL
+    global OLD_COLOR_VAL
+    pass
 
 # define pin and create neopixel object:
 pin = machine.Pin(PIXEL_PIN)
@@ -72,6 +78,7 @@ while True:
         count = 1
         print(str(count) + ': ' + RECVD_COLOR)
         recvd_color_test(RECVD_COLOR)
-        new_neopixel_color(NEW_COLOR)
+        new_neopixel_color(NEW_COLOR_VAL)
         PREVIOUS_COLOR = RECVD_COLOR
+        OLD_COLOR_VAL = NEW_COLOR_VAL
     time.sleep_ms(INTERVAL)
