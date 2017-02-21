@@ -52,6 +52,11 @@ def new_neopixel_color(next_color):
     np.write()
     return None
 
+def neopixel_blank():
+    np.fill((0,0,0))
+    np.write()
+    return None
+
 def color_transition():
     global NEW_COLOR_VAL
     global OLD_COLOR_VAL
@@ -60,6 +65,9 @@ def color_transition():
 # define pin and create neopixel object:
 pin = machine.Pin(PIXEL_PIN)
 np = neopixel.NeoPixel(pin, NUM_OF_PIXELS)
+
+# turn off any lit neopixels:
+neopixel_blank()
 
 count = 0
 while True:
