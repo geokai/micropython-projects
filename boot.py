@@ -15,6 +15,6 @@ def do_connect(ssid, password):
 
 do_connect(ssid, password)  # replace args with credentials:
 
-#import webrepl
-#webrepl.start()
+import webrepl
+webrepl.start()
 gc.collect()
