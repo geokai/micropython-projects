@@ -1,7 +1,7 @@
 # This micropython script will make a request to the cheerlights api
 # every 20 seconds and parse out the latest 'color' information using the
 # 'ujson' method. 
-# A counter in reset with each new color and incremented with each
+# A counter is reset with each new color and incremented with each
 # subsequent same color cycle.
 
 # Author: George Kaimakis
@@ -63,7 +63,7 @@ def color_transition():
     pass
 
 # define pin and create neopixel object:
-pin = machine.Pin(PIXEL_PIN)
+pin = machine.Pin(PIXEL_PIN, machine.Pin.OUT)
 np = neopixel.NeoPixel(pin, NUM_OF_PIXELS)
 
 # turn off any lit neopixels:
