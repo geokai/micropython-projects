@@ -15,7 +15,7 @@ def do_connect(ssid, password):
             pass
     print('network config: ', sta_if.ifconfig())
 
-do_connect(ssid, password)  # replace args with credentials within quotes:
+do_connect('<ssid>', '<password>')  # replace args with credentials:
 
 #import webrepl
 #webrepl.start()
