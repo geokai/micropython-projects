@@ -4,12 +4,14 @@ from time import sleep
 
 sen = dht.DHT22(machine.Pin(2))
 
+counter = 0
 while True:
-    print("Checking Temp & Humidity...")
+    print("Checking Temp & Humidity...{0}".format(counter + 1))
     sleep(2)
-    print()
+    #print()
     sen.measure()
-    print('Temp {0}C'.format(sen.temperature()))
-    print('Hum {0}%'.format(sen.humidity()))
+    print("Temp \t{0:3.1f}C".format(sen.temperature()))
+    print("Hum \t{0:3.1f}%".format(sen.humidity()))
     print()
+    counter += 1
     sleep(180)
