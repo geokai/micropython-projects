@@ -1,4 +1,4 @@
 # files to be ignored in this repo
 
 *.pyc
-boot_orig/
+boot_network/
