@@ -12,11 +12,11 @@ counter = 0
 while True:
     print("Checking Temp, Pressure & Humidity ...{0}".format(counter + 1))
     #print()
-    reading = bme.values
+    readings = bme.read_compensated_data()
     sleep(0.5)
-    print("Temperature \t{0:s}elcius".format(bme.values[0]))
-    print("Pressure \t{0:s}scal".format(bme.values[1]))
-    print("Humidity \t{0:s} RH".format(bme.values[2]))
+    print("Temp \t{0:6.1f} Celcius".format(readings[0]/100))
+    print("Pres \t{0:6.1f} hPa".format(readings[1]/256/100))
+    print("Humi \t{0:6.1f} % RH".format(readings[2]/1024))
     print()
     counter += 1
     sleep(600)
