@@ -11,22 +11,22 @@
 
 import machine, time
 
-extra_delay = 200
+extra_delay = 140
 
 #p16 = machine.Pin(16, machine.Pin.OUT)
-p2 = machine.Pin(2, machine.Pin.OUT)
+#p2 = machine.Pin(2, machine.Pin.OUT)
 #p2.high()
-p2.low()
+#p2.low()
 
 #pwm16 = machine.PWM(machine.Pin(16))
 pwm2 = machine.PWM(machine.Pin(2))
 
 def pulse(p, d):
     while True:
-        for i in range(1015, -1, -4):
+        for i in range(1020, -1, -50):
             p.duty(i)
             time.sleep_ms(d)
-        for i in range(0, 1015, 3):
+        for i in range(0, 1020, 3):
             p.duty(i)
             time.sleep_ms(d)
         time.sleep_ms(extra_delay)
