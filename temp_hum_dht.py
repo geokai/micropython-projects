@@ -14,8 +14,8 @@ while True:
     sen.measure()
     sleep(0.5)
     print("Temperature \t{0:3.1f} Celcius".format(sen.temperature()))
-    print("Humidity \t{0:3.1f} % RH".format(sen.humidity()))
     print()
+    print("Humidity \t{0:3.1f} % RH".format(sen.humidity()))
     print()
     counter += 1
     sleep(600)
