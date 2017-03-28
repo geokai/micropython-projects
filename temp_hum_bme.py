@@ -14,9 +14,9 @@ while True:
     #print()
     readings = bme.read_compensated_data()
     sleep(0.5)
-    print("Temp \t{0:6.1f} Celcius".format(readings[0]/100))
-    print("Pres \t{0:6.1f} hPa".format(readings[1]/256/100))
-    print("Humi \t{0:6.1f} % RH".format(readings[2]/1024))
+    print("Temperature  \t{0:6.1f} Celcius".format(readings[0]/100))
+    print("Pressure \t{0:6.1f} hPa".format(readings[1]/256/100))
+    print("Humidity \t{0:6.1f} % RH".format(readings[2]/1024))
     print()
     counter += 1
     sleep(600)
