@@ -13,16 +13,13 @@ import machine, time
 
 extra_delay = 140
 
-#p16 = machine.Pin(16, machine.Pin.OUT)
-#p2 = machine.Pin(2, machine.Pin.OUT)
-#p2.high()
-#p2.low()
 
-#pwm16 = machine.PWM(machine.Pin(16))
+# create a pwm object on pin 2:
 pwm2 = machine.PWM(machine.Pin(2))
 
 def pulse(p, d):
     while True:
+        # pwm is 10 bit 0-1023. pin is active low:
         for i in range(1020, -1, -50):
             p.duty(i)
             time.sleep_ms(d)
