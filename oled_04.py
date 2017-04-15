@@ -29,5 +29,18 @@ time.sleep_ms(500)
 # the framebuf class contains methods for drawing rectangles
 # fill_rect, rect - also use these with height/width of 1 pixel to create lines:
 
+oled.framebuf.rect(0, 0, 128, 16, 1)
+oled.framebuf.rect(0, 16, 128, 48, 1)
+oled.show()
+
+INTERVAL = 1000
+
 while True:
-    pass
+    oled.framebuf.fill_rect(2, 2, 12, 12, 1)
+    oled.show()
+    time.sleep_ms(INTERVAL)
+    oled.framebuf.fill_rect(2, 2, 12, 12, 0)
+    oled.framebuf.rect(2, 2, 12, 12, 1)
+    oled.framebuf.rect(3, 3, 10, 10, 1)
+    oled.show()
+    time.sleep_ms(INTERVAL)
