@@ -1,3 +1,6 @@
+# Micropython implementation for the ESP8266:
+# (Adapt as necessary for your chosen platform)
+
 # This script uses the ssd1306 oled module.
 # to switch off all display pixels:
 
