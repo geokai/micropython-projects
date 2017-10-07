@@ -1,5 +1,6 @@
-# This script pulses the on-board led at varying speeds depending on
-# parameters:
+"""This script pulses the on-board led at varying speeds depending on
+parameters:
+"""
 
 # This script presented by Damien George at the GOTO 2016 conference.
 
@@ -9,7 +10,8 @@
 # in order to smeeth out the pulsing
 
 
-import machine, time
+import time
+import machine
 
 extra_delay = 140
 
@@ -18,6 +20,10 @@ extra_delay = 140
 pwm2 = machine.PWM(machine.Pin(2))
 
 def pulse(p, d):
+    """pulse function within an infiite loop
+    duty range 0 - 1023, active low: 0 = fully on, 1023 = fully off
+    default pwm frequency, freq=500
+    """
     while True:
         # pwm is 10 bit 0-1023. pin is active low:
         for i in range(1020, -1, -50):

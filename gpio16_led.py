@@ -1,3 +1,9 @@
+"""Blink the built-in led at 'INTERVAL' rate
+
+Note the use of 'value()' instead of 'on()' & 'off()' methods to avoid
+confusion with active low pins.
+"""
+
 # This short program utilizes the built-in blue LED on the Node-MCU board:
 # The LED is flashed on and off within an infinite loop:
 
@@ -5,18 +11,18 @@
 # Author: George Kaimakis
 
 
-import machine
 import time
+import machine
 import neopixel
 
 # led set-up:
-PIXEL_PIN       = 16
-INTERVAL        = 0.5
+PIXEL_PIN = 16
+INTERVAL = 0.5
 
 led = machine.Pin(PIXEL_PIN, machine.Pin.OUT)
 
 while True:
-    led.low()
+    led.value(1)
     time.sleep(INTERVAL)
-    led.high()
+    led.value(0)
     time.sleep(INTERVAL)

@@ -1,23 +1,24 @@
+"""This script uses the BME280 sensor to return temperature, atmospheric pressure
+and humidity.
+Uses a one-wire method of connection to the device on the ESP8266 using
+a software i2c method:
+"""
+
 # Micropython implementation for the ESP8266:
 # (Adapt as necessary for your chosen platform)
-
-# This script uses the BME280 sensor to return temperature, atmospheric pressure
-# and humidity.
-# Uses a one-wire method of connection to the device on the ESP8266 using
-# a software i2c method:
 
 # This file was created on 30/03/2017
 # Author: George Kaimakis
 
 
+from time import sleep
 import machine
 import bme280
-from time import sleep
 
-BOARD_LED   = 16    # on-board led used as 'reading sensor' indicator:
-INTERVAL    = 10    # interval between readings:
-PAUSE       = 0.5   # small pause before printing results (for effect!):
-BLIP        = 0.05  # tiny delay for the led indicator:
+BOARD_LED = 16  # on-board led used as 'reading sensor' indicator:
+INTERVAL = 10   # interval between readings (loop):
+PAUSE = 0.5     # small pause before printing results (for effect!):
+BLIP = 0.05     # tiny delay for the led indicator:
 
 
 # create objects for i2c and the bme280 sensor:
@@ -33,11 +34,11 @@ print('i2c devices found: {0}'.format(i2c.scan()))
 print()
 
 
-# momentary led flash (blip!) to indicate sensor reading:
 def led_flash():
-    led.low()
+    """momentary 'blip' of the led to indicate sensor reading taken"""
+    led.value(0)    # active low, 0 = on
     sleep(BLIP)
-    led.high()
+    led.value(1)    # active low, 1 = off
 
 
 counter = 0     # reset counter:
