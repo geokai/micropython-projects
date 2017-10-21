@@ -16,7 +16,7 @@ import machine
 import bme280
 
 BOARD_LED = 16  # on-board led used as 'reading sensor' indicator:
-INTERVAL = 10   # interval between readings (loop):
+INTERVAL = 300   # interval between readings (loop):
 PAUSE = 0.5     # small pause before printing results (for effect!):
 BLIP = 0.05     # tiny delay for the led indicator:
 
@@ -46,7 +46,7 @@ counter = 0     # reset counter:
 # main loop:
 while True:
     print("Checking", end='')
-    led_flash()
+    # led_flash()
     readings = bme.read_compensated_data()
     sleep(PAUSE)
     for i in range(3):
