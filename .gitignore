@@ -3,3 +3,4 @@
 *.pyc
 boot_network/
 boot_orig/
+.mypy_cache/
