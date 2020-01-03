@@ -55,7 +55,7 @@ while True:
     print("\rTemperature, Pressure & Humidity ...{0}".format(counter + 1))
     sleep(PAUSE)
     # Adjustment factors for aquired readings (refer to bme280 datasheet):
-    print("Temp:  \t{0:6.1f} Celcius".format(readings[0]/100))
+    print("Temp: \t{0:6.1f} Celcius".format(readings[0]/100))
     print("Pres: \t{0:6.1f} hPa/mb".format(readings[1]/256/100))
     print("Humi: \t{0:6.1f} % RH".format(readings[2]/1024))
     print()
