@@ -12,6 +12,7 @@ import urequests
 import time
 import neopixel
 import machine
+import wifi
 
 # Global variables:
 RECVD_COLOR         = ''
@@ -26,6 +27,15 @@ INTERVAL            = 20000
 host                = 'https://thingspeak.com/'
 topic               = 'channels/1417/feeds/last.json'
 api                 = host + topic
+
+# connect to wifi network:
+while True:
+    try:
+        wifi.connect_wifi()
+        break
+    except Exception:
+        print("Can not connect to wifi")
+        time.sleep(5)
 
 
 # look-up color dict - api 'field1' is used as the key:
